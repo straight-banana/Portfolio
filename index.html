@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Abdus Salam Tasnim — Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" href="img.png"/>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: { light: '#E8C76A', DEFAULT: '#C9A84C', dim: '#7A6025', dark: '#1E1600' },
+            ink: { DEFAULT: '#0A0A0A', card: '#111111', border: '#2A2A2A' },
+            cream: '#F0EBE0',
+            muted: '#8A8070',
+          },
+          fontFamily: {
+            serif: ['Merriweather', 'serif'],
+            sans: ['Space Grotesk', 'sans-serif'],
+          },
+          keyframes: {
+            nudge: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(6px)' } },
+          },
+          animation: {
+            nudge: 'nudge 1.6s ease-in-out infinite',
+          },
+        },
+      },
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .clip-cut-lg { clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px)); }
+      .clip-cut-sm { clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px)); }
+    }
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 2px;
+      background-color: theme('colors.gold.DEFAULT');
+      transition: width 0.2s ease;
+    }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 28px; height: 2px;
+      background-color: theme('colors.gold.DEFAULT');
+    }
+  </style>
+</head>
+<body class="font-sans bg-ink text-cream [scroll-behavior:smooth]">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-ink-border bg-ink/90 backdrop-blur-sm">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="font-serif font-black text-lg tracking-tight text-gold">A. Salam Tasnim</a>
+      <nav class="flex items-center gap-8 text-sm font-semibold text-muted">
+        <a href="index.html" class="nav-link active text-gold">Home</a>
+        <a href="about.html" class="nav-link hover:text-white transition">About</a>
+        <a href="showcase.html" class="nav-link hover:text-white transition">Projects</a>
+        <a href="mailto:abdussalamtasnim@gmail.com" class="bg-gold hover:bg-gold-light text-ink font-bold tracking-wide px-4 py-1.5 text-sm transition">Hire Me</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-16 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,#1a1200_0%,#0A0A0A_70%)]">
+
+    <div class="clip-cut-lg w-[130px] h-[130px] flex items-center justify-center mb-6 relative overflow-hidden bg-gradient-to-br from-[#1f1700] to-[#3d2e00] ring-[1.5px] ring-gold">
+      <img src="img.png"/>
+    </div>
+
+    <div class="section-label flex items-center justify-center gap-2.5 text-[0.7rem] font-bold tracking-[0.2em] uppercase text-gold mb-4">Computer Science &amp; Engineering Student</div>
+
+    <h1 class="font-serif text-[clamp(3.2rem,9vw,6.5rem)] leading-[0.95] tracking-[-0.02em] text-white mb-6">
+      Abdus Salam<br/>Tasnim
+    </h1>
+
+    <p class="text-lg max-w-lg mb-10 text-muted">
+      I build real-world software and embedded systems — from full-stack web apps
+      to IoT devices that sense and act on the physical world.
+    </p>
+
+    <div class="flex flex-wrap justify-center gap-3 mb-16">
+      <a href="showcase.html" class="bg-gold hover:bg-gold-light text-ink font-bold tracking-wide px-6 py-3 text-sm transition">See My Projects</a>
+      <a href="about.html"
+         class="px-6 py-3 text-sm font-semibold border border-ink-border text-cream transition hover:border-gold-dim hover:text-gold">
+        My Resume
+      </a>
+    </div>
+
+    <div class="animate-nudge text-2xl text-ink-border">↓</div>
+  </section>
+
+  <!-- About Me -->
+  <section class="py-20 px-6 bg-ink-card border-t border-b border-ink-border">
+    <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-14 items-center">
+
+      <div>
+        <div class="section-label flex items-center gap-2.5 text-[0.7rem] font-bold tracking-[0.2em] uppercase text-gold mb-4">About Me</div>
+        <h2 class="font-serif text-3xl font-black mb-4 text-white">Where software<br/>meets hardware.</h2>
+        <div class="w-10 h-[3px] bg-gold mb-6"></div>
+        <p class="leading-relaxed mb-6 text-muted">
+          I'm a CSE student at BAIUST with a strong interest in software development,
+          embedded systems, and networking. I enjoy building complete applications —
+          from idea to deployment — and understanding how systems work internally.
+        </p>
+        <a href="about.html" class="text-sm font-bold tracking-wide hover:opacity-70 transition text-gold">
+          Read more about me →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-2 gap-2">
+        <div class="bg-ink-card border border-ink-border p-5 text-center transition hover:border-gold-dim hover:bg-[#141000]"><div class="text-3xl mb-2">🌐</div><p class="font-semibold text-sm text-white">Web Dev</p></div>
+        <div class="bg-ink-card border border-ink-border p-5 text-center transition hover:border-gold-dim hover:bg-[#141000]"><div class="text-3xl mb-2">⚡</div><p class="font-semibold text-sm text-white">JavaScript</p></div>
+        <div class="bg-ink-card border border-ink-border p-5 text-center transition hover:border-gold-dim hover:bg-[#141000]"><div class="text-3xl mb-2">🔌</div><p class="font-semibold text-sm text-white">ESP32 &amp; Arduino</p></div>
+        <div class="bg-ink-card border border-ink-border p-5 text-center transition hover:border-gold-dim hover:bg-[#141000]"><div class="text-3xl mb-2">🔥</div><p class="font-semibold text-sm text-white">Firebase</p></div>
+        <div class="bg-ink-card border border-ink-border p-5 text-center transition hover:border-gold-dim hover:bg-[#141000]"><div class="text-3xl mb-2">🌳</div><p class="font-semibold text-sm text-white">Networking</p></div>
+        <div class="bg-ink-card border border-ink-border p-5 text-center transition hover:border-gold-dim hover:bg-[#141000]"><div class="text-3xl mb-2">🛠️</div><p class="font-semibold text-sm text-white">C / C++</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section class="py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+
+      <div class="text-center mb-14">
+        <div class="section-label flex items-center justify-center gap-2.5 text-[0.7rem] font-bold tracking-[0.2em] uppercase text-gold mb-4">Work</div>
+        <h2 class="font-serif text-3xl font-black text-white">Featured Projects</h2>
+      </div>
+
+      <div class="space-y-4">
+
+        <!-- Project 01 -->
+        <div class="bg-ink-card border border-ink-border p-6 flex flex-col sm:flex-row items-start gap-5 group transition hover:border-gold-dim hover:-translate-y-1">
+          <div class="font-serif text-5xl font-black text-[#1E1E1E] leading-none shrink-0">01</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-white text-lg mb-1">CSE Learn</h3>
+            <p class="text-sm mb-4 text-muted">
+              A platform to learn computer science engineering, track progress, and
+              find study resources — all in one place.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-[0.7rem] font-semibold tracking-wide bg-gold-dark text-gold border border-gold-dim px-2.5 py-0.5">React</span>
+              <span class="text-[0.7rem] font-semibold tracking-wide bg-gold-dark text-gold border border-gold-dim px-2.5 py-0.5">Firebase</span>
+              <span class="text-[0.7rem] font-semibold tracking-wide bg-gold-dark text-gold border border-gold-dim px-2.5 py-0.5">Tailwind</span>
+            </div>
+          </div>
+          <a href="https://cs-elearn.vercel.app/" target="_blank" rel="noopener" class="text-2xl transition shrink-0 text-ink-border group-hover:text-gold">→</a>
+        </div>
+
+        <!-- Project 02 -->
+        <div class="bg-ink-card border border-ink-border p-6 flex flex-col sm:flex-row items-start gap-5 group transition hover:border-gold-dim hover:-translate-y-1">
+          <div class="font-serif text-5xl font-black text-[#1E1E1E] leading-none shrink-0">02</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-white text-lg mb-1">Wave Visualizer</h3>
+            <p class="text-sm mb-4 text-muted">
+              An interactive signal visualizing tool for exploring waveforms,
+              frequency, and sampling concepts in real time.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-[0.7rem] font-semibold tracking-wide bg-gold-dark text-gold border border-gold-dim px-2.5 py-0.5">React</span>
+              <span class="text-[0.7rem] font-semibold tracking-wide bg-gold-dark text-gold border border-gold-dim px-2.5 py-0.5">Canvas</span>
+              <span class="text-[0.7rem] font-semibold tracking-wide bg-gold-dark text-gold border border-gold-dim px-2.5 py-0.5">Signal Processing</span>
+            </div>
+          </div>
+          <a href="https://wave-visualizer-smoky.vercel.app/" target="_blank" rel="noopener" class="text-2xl transition shrink-0 text-ink-border group-hover:text-gold">→</a>
+        </div>
+
+        <!-- Project 03 -->
+        <div class="bg-ink-card border border-ink-border p-6 flex flex-col sm:flex-row items-start gap-5 group transition hover:border-gold-dim hover:-translate-y-1">
+          <div class="font-serif text-5xl font-black text-[#1E1E1E] leading-none shrink-0">03</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-white text-lg mb-1">Smart Stove Safety System</h3>
+            <p class="text-sm mb-4 text-muted">
+              An ESP32-based IoT system that detects unsafe cooking conditions and
+              automatically shuts off the stove to prevent gas leaks and fire hazards.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-[0.7rem] font-semibold tracking-wide bg-gold-dark text-gold border border-gold-dim px-2.5 py-0.5">ESP32</span>
+              <span class="text-[0.7rem] font-semibold tracking-wide bg-gold-dark text-gold border border-gold-dim px-2.5 py-0.5">C++</span>
+              <span class="text-[0.7rem] font-semibold tracking-wide bg-gold-dark text-gold border border-gold-dim px-2.5 py-0.5">Sensors</span>
+            </div>
+          </div>
+          <a href="https://github.com/straight-banana/stoveSafety" target="_blank" rel="noopener" class="text-2xl transition shrink-0 text-ink-border group-hover:text-gold">→</a>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="showcase.html" class="text-sm font-bold tracking-wide hover:opacity-70 transition text-gold">
+          See all projects →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get In Touch -->
+  <section class="bg-ink-card border-t border-b border-ink-border py-20 px-6 text-center">
+    <div class="max-w-xl mx-auto">
+      <div class="section-label flex items-center justify-center gap-2.5 text-[0.7rem] font-bold tracking-[0.2em] uppercase text-gold mb-4">Get In Touch</div>
+      <h2 class="font-serif text-4xl font-black text-white mb-4">Let's work<br/>together.</h2>
+      <div class="w-10 h-[3px] bg-gold mb-6 mx-auto"></div>
+      <p class="mb-8 leading-relaxed text-muted">
+        I'm looking for internships, collaborative projects, and opportunities to
+        build things that solve real problems. Let's talk.
+      </p>
+      <a href="mailto:abdussalamtasnim@gmail.com" class="bg-gold hover:bg-gold-light text-ink font-bold tracking-wide inline-block px-8 py-4 text-base transition">
+        abdussalamtasnim@gmail.com
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-ink border-t border-ink-border py-6 px-6">
+    <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-4">
+      <p class="text-sm text-muted">© 2026 Abdus Salam Tasnim. Built with HTML &amp; Tailwind CSS.</p>
+      <div class="flex gap-5 text-sm text-muted">
+        <a href="https://github.com/straight-banana" target="_blank" rel="noopener" class="hover:text-white transition">GitHub</a>
+        <a href="https://www.linkedin.com/in/abduabdussalamtasnim/" target="_blank" rel="noopener" class="hover:text-white transition">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

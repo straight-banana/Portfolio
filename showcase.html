@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects — Abdus Salam Tasnim</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" href="img.png"/>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: { light: '#E8C76A', DEFAULT: '#C9A84C', dim: '#7A6025', dark: '#1E1600' },
+            ink: { DEFAULT: '#0A0A0A', card: '#111111', border: '#2A2A2A' },
+            cream: '#F0EBE0',
+            muted: '#8A8070',
+          },
+          fontFamily: {
+            serif: ['Merriweather', 'serif'],
+            sans: ['Space Grotesk', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style type="text/tailwindcss">
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 2px;
+      background-color: theme('colors.gold.DEFAULT');
+      transition: width 0.2s ease;
+    }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 28px; height: 2px;
+      background-color: theme('colors.gold.DEFAULT');
+    }
+    .filter-tab {
+      border-bottom: 2px solid transparent;
+      color: theme('colors.muted');
+      font-weight: 600;
+      transition: color 0.15s, border-color 0.15s;
+      cursor: pointer;
+    }
+    .filter-tab:hover { color: theme('colors.cream'); border-color: theme('colors.ink.border'); }
+    .filter-tab.active { color: theme('colors.gold.DEFAULT'); border-color: theme('colors.gold.DEFAULT'); }
+  </style>
+</head>
+<body class="font-sans bg-ink text-cream [scroll-behavior:smooth]">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-ink-border bg-ink/90 backdrop-blur-sm">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="font-serif font-black text-lg tracking-tight text-gold">A. Salam Tasnim</a>
+      <nav class="flex items-center gap-8 text-sm font-semibold text-muted">
+        <a href="index.html" class="nav-link hover:text-white transition">Home</a>
+        <a href="about.html" class="nav-link hover:text-white transition">About</a>
+        <a href="showcase.html" class="nav-link active text-gold">Projects</a>
+        <a href="mailto:abdussalamtasnim@gmail.com" class="bg-gold hover:bg-gold-light text-ink font-bold tracking-wide px-4 py-1.5 text-sm transition">Hire Me</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="pt-32 pb-16 px-6 text-center border-b border-ink-border bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,#1a1200_0%,#0A0A0A_70%)]">
+    <div class="max-w-2xl mx-auto">
+      <div class="section-label flex items-center justify-center gap-2.5 text-[0.7rem] font-bold tracking-[0.2em] uppercase text-gold mb-4">My Work</div>
+      <h1 class="font-serif text-4xl md:text-5xl font-black text-white mb-4">Projects</h1>
+      <p class="leading-relaxed text-muted">
+        Every project here is something I built from scratch — web platforms,
+        embedded systems, and tools that solve real problems. Click GitHub or
+        Live to explore each one.
+      </p>
+    </div>
+  </section>
+
+  <!-- Filter Tabs -->
+  <section class="border-b border-ink-border bg-ink sticky top-16 z-40">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex gap-0 overflow-x-auto">
+        <button onclick="filterProjects('all', this)" class="filter-tab active px-5 py-4 text-sm whitespace-nowrap">All Projects</button>
+        <button onclick="filterProjects('web', this)" class="filter-tab px-5 py-4 text-sm whitespace-nowrap">Web Apps</button>
+        <button onclick="filterProjects('embedded', this)" class="filter-tab px-5 py-4 text-sm whitespace-nowrap">Embedded / IoT</button>
+        <button onclick="filterProjects('tools', this)" class="filter-tab px-5 py-4 text-sm whitespace-nowrap">Tools</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- All Projects -->
+  <main class="max-w-5xl mx-auto px-6 py-14 pb-24">
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="project-grid">
+
+      <!--CSE Learn -->
+      <div class="bg-ink-card border border-ink-border flex flex-col transition hover:border-gold-dim hover:-translate-y-1" data-category="web">
+        <div class="h-32 flex items-center justify-center text-5xl border-b border-ink-border bg-gradient-to-br from-[#161200] to-[#0e0c00]">📚</div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="text-[0.7rem] font-bold tracking-wide uppercase text-gold bg-gold-dark border border-gold-dim px-2.5 py-0.5 w-fit mb-3">Web App</span>
+          <h3 class="font-serif font-bold text-white text-base mb-2">CSE Learn</h3>
+          <p class="text-sm leading-relaxed mb-4 flex-1 text-muted">
+            A platform to learn computer science engineering, track progress, and
+            find study resources — all in one place.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            <span class="text-[0.7rem] font-semibold bg-[#161616] text-muted border border-ink-border px-2 py-0.5">React</span>
+            <span class="text-[0.7rem] font-semibold bg-[#161616] text-muted border border-ink-border px-2 py-0.5">Firebase</span>
+            <span class="text-[0.7rem] font-semibold bg-[#161616] text-muted border border-ink-border px-2 py-0.5">Tailwind</span>
+          </div>
+          <div class="flex gap-3 pt-4 border-t border-ink-border">
+            <a href="https://cs-elearn.vercel.app/" target="_blank" rel="noopener" class="flex-1 text-center text-sm font-bold py-2 transition bg-gold hover:bg-gold-light text-ink">Live →</a>
+          </div>
+        </div>
+      </div>
+
+      <!--  Wave Visualizer -->
+      <div class="bg-ink-card border border-ink-border flex flex-col transition hover:border-gold-dim hover:-translate-y-1" data-category="web">
+        <div class="h-32 flex items-center justify-center text-5xl border-b border-ink-border bg-gradient-to-br from-[#161200] to-[#0e0c00]">📈</div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="text-[0.7rem] font-bold tracking-wide uppercase text-gold bg-gold-dark border border-gold-dim px-2.5 py-0.5 w-fit mb-3">Web App</span>
+          <h3 class="font-serif font-bold text-white text-base mb-2">Wave Visualizer</h3>
+          <p class="text-sm leading-relaxed mb-4 flex-1 text-muted">
+            An interactive signal visualizing tool for exploring waveforms,
+            frequency, and sampling concepts in real time.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            <span class="text-[0.7rem] font-semibold bg-[#161616] text-muted border border-ink-border px-2 py-0.5">React</span>
+            <span class="text-[0.7rem] font-semibold bg-[#161616] text-muted border border-ink-border px-2 py-0.5">Canvas</span>
+            <span class="text-[0.7rem] font-semibold bg-[#161616] text-muted border border-ink-border px-2 py-0.5">Signal Processing</span>
+          </div>
+          <div class="flex gap-3 pt-4 border-t border-ink-border">
+            <a href="https://wave-visualizer-smoky.vercel.app/" target="_blank" rel="noopener" class="flex-1 text-center text-sm font-bold py-2 transition bg-gold hover:bg-gold-light text-ink">Live →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Smart Stove Safety System -->
+      <div class="bg-ink-card border border-ink-border flex flex-col transition hover:border-gold-dim hover:-translate-y-1" data-category="embedded">
+        <div class="h-32 flex items-center justify-center text-5xl border-b border-ink-border bg-gradient-to-br from-[#161200] to-[#0e0c00]">🔥</div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="text-[0.7rem] font-bold tracking-wide uppercase text-gold bg-gold-dark border border-gold-dim px-2.5 py-0.5 w-fit mb-3">Embedded / IoT</span>
+          <h3 class="font-serif font-bold text-white text-base mb-2">Smart Stove Safety System</h3>
+          <p class="text-sm leading-relaxed mb-4 flex-1 text-muted">
+            An ESP32-based IoT system with flame, gas, and load-cell sensors that
+            detects unsafe cooking conditions and automatically shuts off the
+            stove knob to prevent gas leaks and fire hazards.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            <span class="text-[0.7rem] font-semibold bg-[#161616] text-muted border border-ink-border px-2 py-0.5">ESP32</span>
+            <span class="text-[0.7rem] font-semibold bg-[#161616] text-muted border border-ink-border px-2 py-0.5">C++</span>
+            <span class="text-[0.7rem] font-semibold bg-[#161616] text-muted border border-ink-border px-2 py-0.5">Sensors</span>
+            <span class="text-[0.7rem] font-semibold bg-[#161616] text-muted border border-ink-border px-2 py-0.5">Servo</span>
+          </div>
+          <div class="flex gap-3 pt-4 border-t border-ink-border">
+            <a href="https://github.com/straight-banana/stoveSafety" target="_blank" rel="noopener" class="flex-1 text-center text-sm font-bold py-2 transition border border-ink-border text-muted hover:border-gold-dim hover:text-gold">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- MCU Workshop Visualizer -->
+      <div class="bg-ink-card border border-ink-border flex flex-col transition hover:border-gold-dim hover:-translate-y-1" data-category="embedded">
+        <div class="h-32 flex items-center justify-center text-5xl border-b border-ink-border bg-gradient-to-br from-[#161200] to-[#0e0c00]">⚡</div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="text-[0.7rem] font-bold tracking-wide uppercase text-gold bg-gold-dark border border-gold-dim px-2.5 py-0.5 w-fit mb-3">Embedded / IoT</span>
+          <h3 class="font-serif font-bold text-white text-base mb-2">MCU Workshop Visualizer</h3>
+          <p class="text-sm leading-relaxed mb-4 flex-1 text-muted">
+            An interactive React app that turns Arduino &amp; ESP32 workshop concepts
+            into hands-on animated visualizations — GPIO, PWM, ADC, I2C, and more —
+            with live signal graphs instead of static diagrams.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            <span class="text-[0.7rem] font-semibold bg-[#161616] text-muted border border-ink-border px-2 py-0.5">React</span>
+            <span class="text-[0.7rem] font-semibold bg-[#161616] text-muted border border-ink-border px-2 py-0.5">Canvas API</span>
+            <span class="text-[0.7rem] font-semibold bg-[#161616] text-muted border border-ink-border px-2 py-0.5">SVG</span>
+          </div>
+          <div class="flex gap-3 pt-4 border-t border-ink-border">
+            <a href="https://github.com/straight-banana/EmbeddedSystemWorkshop" target="_blank" rel="noopener" class="flex-1 text-center text-sm font-bold py-2 transition border border-ink-border text-muted hover:border-gold-dim hover:text-gold">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Eid Meat Distribution App -->
+      <div class="bg-ink-card border border-ink-border flex flex-col transition hover:border-gold-dim hover:-translate-y-1" data-category="tools">
+        <div class="h-32 flex items-center justify-center text-5xl border-b border-ink-border bg-gradient-to-br from-[#161200] to-[#0e0c00]">🐑</div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="text-[0.7rem] font-bold tracking-wide uppercase text-gold bg-gold-dark border border-gold-dim px-2.5 py-0.5 w-fit mb-3">Tool</span>
+          <h3 class="font-serif font-bold text-white text-base mb-2">Eid Meat Distribution App</h3>
+          <p class="text-sm leading-relaxed mb-4 flex-1 text-muted">
+            A lightweight, offline-first volunteer app for Eid meat distribution —
+            tracks entries and families, auto-calculates fair shares, and prints
+            donor/receiver invoice slips. No backend required.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            <span class="text-[0.7rem] font-semibold bg-[#161616] text-muted border border-ink-border px-2 py-0.5">JavaScript</span>
+            <span class="text-[0.7rem] font-semibold bg-[#161616] text-muted border border-ink-border px-2 py-0.5">CSS</span>
+            <span class="text-[0.7rem] font-semibold bg-[#161616] text-muted border border-ink-border px-2 py-0.5">localStorage</span>
+          </div>
+          <div class="flex gap-3 pt-4 border-t border-ink-border">
+            <a href="https://github.com/straight-banana/EidAlAdha" target="_blank" rel="noopener" class="flex-1 text-center text-sm font-bold py-2 transition border border-ink-border text-muted hover:border-gold-dim hover:text-gold">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Frontend Ideas -->
+      <div class="bg-ink-card border border-ink-border flex flex-col transition hover:border-gold-dim hover:-translate-y-1" data-category="tools">
+        <div class="h-32 flex items-center justify-center text-5xl border-b border-ink-border bg-gradient-to-br from-[#161200] to-[#0e0c00]">🎨</div>
+        <div class="p-5 flex flex-col flex-1">
+          <span class="text-[0.7rem] font-bold tracking-wide uppercase text-gold bg-gold-dark border border-gold-dim px-2.5 py-0.5 w-fit mb-3">Tool</span>
+          <h3 class="font-serif font-bold text-white text-base mb-2">Frontend Ideas</h3>
+          <p class="text-sm leading-relaxed mb-4 flex-1 text-muted">
+            A collection of frontend UI experiments and storefront concepts —
+            exploring layout, animation, and interaction design beyond
+            academic requirements.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            <span class="text-[0.7rem] font-semibold bg-[#161616] text-muted border border-ink-border px-2 py-0.5">HTML</span>
+            <span class="text-[0.7rem] font-semibold bg-[#161616] text-muted border border-ink-border px-2 py-0.5">CSS</span>
+            <span class="text-[0.7rem] font-semibold bg-[#161616] text-muted border border-ink-border px-2 py-0.5">JavaScript</span>
+          </div>
+          <div class="flex gap-3 pt-4 border-t border-ink-border">
+            <a href="https://github.com/straight-banana/Frontend_ideas" target="_blank" rel="noopener" class="flex-1 text-center text-sm font-bold py-2 transition border border-ink-border text-muted hover:border-gold-dim hover:text-gold">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Get In Touch -->
+  <section class="bg-ink-card border-t border-b border-ink-border py-20 px-6 text-center">
+    <div class="max-w-xl mx-auto">
+      <div class="section-label flex items-center justify-center gap-2.5 text-[0.7rem] font-bold tracking-[0.2em] uppercase text-gold mb-4">Get In Touch</div>
+      <h2 class="font-serif text-3xl font-black text-white mb-4">Like what you see?</h2>
+      <div class="w-10 h-[3px] bg-gold mb-6 mx-auto"></div>
+      <p class="leading-relaxed mb-8 text-muted">
+        I'm open to internships, collaborative projects, and interesting problems
+        to solve. Send me an email and let's talk.
+      </p>
+      <a href="mailto:abdussalamtasnim@gmail.com" class="bg-gold hover:bg-gold-light text-ink font-bold tracking-wide inline-block px-8 py-4 text-base transition">
+        abdussalamtasnim@gmail.com
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-ink border-t border-ink-border py-6 px-6">
+    <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-4">
+      <p class="text-sm text-muted">© 2026 Abdus Salam Tasnim. Built with HTML &amp; Tailwind CSS.</p>
+      <div class="flex gap-5 text-sm text-muted">
+        <a href="https://github.com/straight-banana" target="_blank" rel="noopener" class="hover:text-white transition">GitHub</a>
+        <a href="https://www.linkedin.com/in/abduabdussalamtasnim/" target="_blank" rel="noopener" class="hover:text-white transition">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function filterProjects(category, btn) {
+      document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
+      btn.classList.add('active');
+      document.querySelectorAll('#project-grid > div').forEach(function(card) {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

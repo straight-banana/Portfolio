@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — Abdus Salam Tasnim</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" href="img.png"/>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: { light: '#E8C76A', DEFAULT: '#C9A84C', dim: '#7A6025', dark: '#1E1600' },
+            ink: { DEFAULT: '#0A0A0A', card: '#111111', border: '#2A2A2A' },
+            cream: '#F0EBE0',
+            muted: '#8A8070',
+          },
+          fontFamily: {
+            serif: ['Merriweather', 'serif'],
+            sans: ['Space Grotesk', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .clip-cut-sm { clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px)); }
+    }
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 2px;
+      background-color: theme('colors.gold.DEFAULT');
+      transition: width 0.2s ease;
+    }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 28px; height: 2px;
+      background-color: theme('colors.gold.DEFAULT');
+    }
+    .timeline-item { position: relative; padding-left: 1.75rem; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 6px;
+      width: 9px; height: 9px;
+      background-color: theme('colors.gold.DEFAULT');
+      outline: 2px solid theme('colors.gold.dim');
+      outline-offset: 2px;
+    }
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: 4px; top: 20px;
+      width: 1px;
+      height: calc(100% + 1rem);
+      background-color: theme('colors.ink.border');
+    }
+    .timeline-item:last-child::after { display: none; }
+    .social-link:hover { color: theme('colors.gold.DEFAULT') !important; }
+  </style>
+</head>
+<body class="font-sans bg-ink text-cream [scroll-behavior:smooth]">
+
+  <!--NAV-->
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-ink-border bg-ink/90 backdrop-blur-sm">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="font-serif font-black text-lg tracking-tight text-gold">A. Salam Tasnim</a>
+      <nav class="flex items-center gap-8 text-sm font-semibold text-muted">
+        <a href="index.html" class="nav-link hover:text-white transition">Home</a>
+        <a href="about.html" class="nav-link active text-gold">About</a>
+        <a href="showcase.html" class="nav-link hover:text-white transition">Projects</a>
+        <a href="mailto:abdussalamtasnim@gmail.com" class="bg-gold hover:bg-gold-light text-ink font-bold tracking-wide px-4 py-1.5 text-sm transition">Hire Me</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main focus -->
+  <section class="pt-32 pb-16 px-6 text-center border-b border-ink-border bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,#1a1200_0%,#0A0A0A_70%)]">
+    <div class="max-w-2xl mx-auto">
+      <div class="section-label flex items-center justify-center gap-2.5 text-[0.7rem] font-bold tracking-[0.2em] uppercase text-gold mb-4">Resume &amp; Background</div>
+      <h1 class="font-serif text-4xl md:text-5xl font-black text-white mb-4">About Me</h1>
+      <p class="leading-relaxed text-muted">
+        I am passionate about technology and enjoy working on projects that combine
+        software and hardware — full-stack web development, embedded programming,
+        computer networking, and digital system design.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="max-w-5xl mx-auto px-6 py-16 grid md:grid-cols-3 gap-10">
+
+    <!-- Sidebar -->
+    <aside class="md:col-span-1 space-y-6">
+
+      <!-- Profile card -->
+      <div class="bg-ink-card border border-ink-border p-6 text-center">
+        <div class="clip-cut-sm w-[110px] h-[110px] flex items-center justify-center mb-4 mx-auto relative overflow-hidden bg-gradient-to-br from-[#1f1700] to-[#3d2e00] ring-[1.5px] ring-gold">
+          <img src="img.png" alt="Abdus Salam Tasnim" class="w-full h-full object-cover block"/>
+        </div>
+        <h2 class="font-serif font-bold text-white">Abdus Salam Tasnim</h2>
+        <p class="text-sm font-medium mt-0.5 text-gold">CSE Student &amp; Developer</p>
+      </div>
+
+      <!-- Info card -->
+      <div class="bg-ink-card border border-ink-border p-5 space-y-4 text-sm">
+        <div class="flex items-start gap-3">
+          <span class="text-lg shrink-0">📍</span>
+          <div>
+            <p class="text-xs text-muted">Location</p>
+            <p class="font-medium text-white">Bangladesh</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-lg shrink-0">🎓</span>
+          <div>
+            <p class="text-xs text-muted">University</p>
+            <p class="font-medium text-white">Bangladesh Army International University of Science and Technology (BAIUST)</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-lg shrink-0">📧</span>
+          <div>
+            <p class="text-xs text-muted">Email</p>
+            <p class="font-medium text-white break-all">abdussalamtasnim@gmail.com</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-lg shrink-0">✅</span>
+          <div>
+            <p class="text-xs text-muted">Status</p>
+            <p class="font-semibold text-gold">Open to internships &amp; opportunities</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social / Links -->
+      <div class="bg-ink-card border border-ink-border p-5 space-y-3 text-sm">
+        <a href="https://github.com/straight-banana" target="_blank" rel="noopener"
+           class="social-link flex items-center gap-3 transition font-medium text-cream">
+          <span class="text-lg">🐙</span> GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/abduabdussalamtasnim/" target="_blank" rel="noopener"
+           class="social-link flex items-center gap-3 transition font-medium text-cream">
+          <span class="text-lg">💼</span> LinkedIn
+        </a>
+        <a href="mailto:abdussalamtasnim@gmail.com"
+           class="bg-gold hover:bg-gold-light text-ink font-bold tracking-wide flex items-center gap-3 px-4 py-2.5 justify-center transition">
+          ✉️ Email Me
+        </a>
+      </div>
+
+    </aside>
+
+    <!-- Resume Content -->
+    <div class="md:col-span-2 space-y-12">
+
+      <!-- Summary -->
+      <div>
+        <h2 class="font-serif text-xl font-bold text-white mb-1">Professional Summary</h2>
+        <div class="w-10 h-[3px] bg-gold mb-6"></div>
+        <p class="leading-relaxed text-muted">
+          I am a Computer Science and Engineering student with a strong interest in software
+          development, embedded systems, networking, and practical problem-solving. I enjoy
+          building real-world applications that solve everyday problems, from web platforms
+          to IoT systems. I like learning new technologies, understanding how systems work
+          internally, and turning ideas into functional products — while writing clean,
+          maintainable code and continuously expanding my skills through personal projects
+          and academic work.
+        </p>
+      </div>
+
+      <!-- Education -->
+      <div>
+        <h2 class="font-serif text-xl font-bold text-white mb-1">Education</h2>
+        <div class="w-10 h-[3px] bg-gold mb-6"></div>
+
+        <div class="space-y-7">
+          <div class="timeline-item pb-4">
+            <p class="font-bold text-white">B.Sc. in Computer Science &amp; Engineering</p>
+            <p class="text-sm font-medium text-gold">Bangladesh Army International University of Science and Technology (BAIUST)</p>
+            <p class="text-xs mt-0.5 text-muted">CSE Department</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- what I enjoy -->
+      <div>
+        <h2 class="font-serif text-xl font-bold text-white mb-1">What I Enjoy</h2>
+        <div class="w-10 h-[3px] bg-gold mb-6"></div>
+        <ul class="text-sm space-y-2 list-none text-muted">
+          <li class="flex gap-2"><span class="text-gold">▸</span> Building complete applications from idea to deployment</li>
+          <li class="flex gap-2"><span class="text-gold">▸</span> Learning new frameworks and tools</li>
+          <li class="flex gap-2"><span class="text-gold">▸</span> Solving challenging programming problems</li>
+          <li class="flex gap-2"><span class="text-gold">▸</span> Working with microcontrollers and sensors</li>
+          <li class="flex gap-2"><span class="text-gold">▸</span> Exploring how software and hardware interact</li>
+          <li class="flex gap-2"><span class="text-gold">▸</span> Continuously improving my development workflow</li>
+        </ul>
+      </div>
+
+      <!-- Technologies & Tools -->
+      <div>
+        <h2 class="font-serif text-xl font-bold text-white mb-1">Technologies &amp; Tools</h2>
+        <div class="w-10 h-[3px] bg-gold mb-6"></div>
+
+        <div class="space-y-5">
+
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest mb-2 text-gold">Programming Languages</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">C</span>
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">C++</span>
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">JavaScript</span>
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">HTML5</span>
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">CSS3</span>
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">MATLAB</span>
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">8086 Assembly</span>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest mb-2 text-gold">Frontend</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">HTML</span>
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">CSS</span>
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Tailwind CSS</span>
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">JavaScript</span>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest mb-2 text-gold">Backend &amp; Databases</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Firebase</span>
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Firebase Firestore</span>
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Firebase Auth</span>
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">REST APIs</span>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest mb-2 text-gold">Embedded Systems &amp; IoT</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">ESP32</span>
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Arduino</span>
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">OLED Displays</span>
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">LCD Displays</span>
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">IR Sensors</span>
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Soil Moisture Sensors</span>
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Rain Sensors</span>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest mb-2 text-gold">Networking</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Cisco Packet Tracer</span>
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">RIP Routing</span>
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">IP Addressing</span>
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Router &amp; Switch Config</span>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest mb-2 text-gold">Software &amp; Design</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Git</span>
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">GitHub</span>
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">CLO3D</span>
+              <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">VS Code</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Interests -->
+      <div>
+        <h2 class="font-serif text-xl font-bold text-white mb-1">Areas of Interest</h2>
+        <div class="w-10 h-[3px] bg-gold mb-6"></div>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Full-Stack Web Development</span>
+          <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Embedded Systems</span>
+          <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Internet of Things (IoT)</span>
+          <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Computer Networking</span>
+          <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Software Engineering</span>
+          <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Automation</span>
+          <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Human-Computer Interaction</span>
+          <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Open Source Development</span>
+        </div>
+      </div>
+
+      <!-- Strengths -->
+      <div>
+        <h2 class="font-serif text-xl font-bold text-white mb-1">Strengths</h2>
+        <div class="w-10 h-[3px] bg-gold mb-6"></div>
+        <div class="grid grid-cols-2 gap-3 text-sm">
+          <div class="bg-ink-card border border-ink-border p-3 flex items-center gap-2"><span class="text-gold">✦</span> Fast learner</div>
+          <div class="bg-ink-card border border-ink-border p-3 flex items-center gap-2"><span class="text-gold">✦</span> Strong analytical thinking</div>
+          <div class="bg-ink-card border border-ink-border p-3 flex items-center gap-2"><span class="text-gold">✦</span> Problem-solving mindset</div>
+          <div class="bg-ink-card border border-ink-border p-3 flex items-center gap-2"><span class="text-gold">✦</span> Detail-oriented</div>
+          <div class="bg-ink-card border border-ink-border p-3 flex items-center gap-2"><span class="text-gold">✦</span> Self-motivated</div>
+          <div class="bg-ink-card border border-ink-border p-3 flex items-center gap-2"><span class="text-gold">✦</span> Adaptable to new tech</div>
+          <div class="bg-ink-card border border-ink-border p-3 flex items-center gap-2"><span class="text-gold">✦</span> Good debugging skills</div>
+          <div class="bg-ink-card border border-ink-border p-3 flex items-center gap-2"><span class="text-gold">✦</span> Builds real-world projects</div>
+        </div>
+      </div>
+
+      <!-- Relevant Coursework -->
+      <div>
+        <h2 class="font-serif text-xl font-bold text-white mb-1">Relevant Coursework</h2>
+        <div class="w-10 h-[3px] bg-gold mb-6"></div>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Programming Fundamentals</span>
+          <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">OOP</span>
+          <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Data Structures &amp; Algorithms</span>
+          <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Digital Logic Design</span>
+          <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Computer Networks</span>
+          <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Probability &amp; Statistics</span>
+          <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Discrete Mathematics</span>
+          <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Database Systems</span>
+          <span class="text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold">Web Technologies</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-ink border-t border-ink-border py-6 px-6">
+    <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-4">
+      <p class="text-sm text-muted">© 2026 Abdus Salam Tasnim. Built with HTML &amp; Tailwind CSS.</p>
+      <div class="flex gap-5 text-sm text-muted">
+        <a href="https://github.com/straight-banana" target="_blank" rel="noopener" class="hover:text-white transition">GitHub</a>
+        <a href="https://www.linkedin.com/in/abduabdussalamtasnim/" target="_blank" rel="noopener" class="hover:text-white transition">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
