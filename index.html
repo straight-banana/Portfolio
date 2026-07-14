@@ -36,47 +36,91 @@
       .clip-cut-lg { clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px)); }
       .clip-cut-sm { clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px)); }
     }
-    .nav-link { position: relative; }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -3px; left: 0;
-      width: 0; height: 2px;
-      background-color: theme('colors.gold.DEFAULT');
-      transition: width 0.2s ease;
-    }
-    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-    .section-label::before {
-      content: '';
-      display: inline-block;
-      width: 28px; height: 2px;
-      background-color: theme('colors.gold.DEFAULT');
+
+    @layer components {
+      .site-header { @apply fixed top-0 left-0 right-0 z-50 border-b border-ink-border bg-ink/90 backdrop-blur-sm; }
+      .site-header-inner { @apply max-w-5xl mx-auto px-6 h-16 flex items-center justify-between; }
+      .brand { @apply font-serif font-black text-lg tracking-tight text-gold; }
+      .site-nav { @apply flex items-center gap-8 text-sm font-semibold text-muted; }
+      .site-footer { @apply bg-ink border-t border-ink-border py-6 px-6; }
+      .site-footer-inner { @apply max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-4; }
+      .footer-links { @apply flex gap-5 text-sm text-muted; }
+
+      .nav-link { position: relative; @apply hover:text-white transition; }
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -3px; left: 0;
+        width: 0; height: 2px;
+        background-color: theme('colors.gold.DEFAULT');
+        transition: width 0.2s ease;
+      }
+      .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+      .nav-link.active { @apply text-gold; }
+
+      .section-label { @apply inline-flex items-center gap-2.5 text-[0.7rem] font-bold tracking-[0.2em] uppercase text-gold mb-4; }
+      .section-label::before { content: ''; display: inline-block; width: 28px; height: 2px; background-color: theme('colors.gold.DEFAULT'); }
+      .section-label-center { @apply section-label justify-center; }
+      .section-divider { @apply w-10 h-[3px] bg-gold mb-6; }
+      .section-divider-center { @apply section-divider mx-auto; }
+
+      .btn { @apply font-bold tracking-wide text-sm transition; }
+      .btn-primary { @apply btn bg-gold hover:bg-gold-light text-ink px-6 py-3; }
+      .btn-primary-lg { @apply btn bg-gold hover:bg-gold-light text-ink px-8 py-4 text-base; }
+      .btn-primary-sm { @apply btn bg-gold hover:bg-gold-light text-ink px-4 py-1.5; }
+      .btn-outline { @apply btn border border-ink-border text-cream px-6 py-3 hover:border-gold-dim hover:text-gold; }
+      .btn-block { @apply btn flex-1 text-center py-2 bg-gold hover:bg-gold-light text-ink; }
+      .btn-block-outline { @apply btn flex-1 text-center py-2 border border-ink-border text-muted hover:border-gold-dim hover:text-gold; }
+
+      .card { @apply bg-ink-card border border-ink-border; }
+      .card-hover { @apply card transition hover:border-gold-dim hover:-translate-y-1; }
+
+      .tag { @apply text-xs font-semibold bg-[#161616] text-cream border border-ink-border px-2.5 py-1.5 transition hover:border-gold-dim hover:text-gold; }
+      .tag-sm { @apply text-[0.7rem] font-semibold bg-[#161616] text-muted border border-ink-border px-2 py-0.5; }
+      .badge { @apply text-[0.7rem] font-semibold tracking-wide bg-gold-dark text-gold border border-gold-dim px-2.5 py-0.5; }
+
+      .hero-glow { background: radial-gradient(ellipse 70% 50% at 50% 0%, #1a1200 0%, #0A0A0A 70%); }
+      .hero-glow-lg { background: radial-gradient(ellipse 80% 60% at 50% 0%, #1a1200 0%, #0A0A0A 70%); }
+
+      .timeline-item { position: relative; @apply pl-7; }
+      .timeline-item::before { content: ''; position: absolute; left: 0; top: 6px; width: 9px; height: 9px; background-color: theme('colors.gold.DEFAULT'); outline: 2px solid theme('colors.gold.dim'); outline-offset: 2px; }
+      .timeline-item::after { content: ''; position: absolute; left: 4px; top: 20px; width: 1px; height: calc(100% + 1rem); background-color: theme('colors.ink.border'); }
+      .timeline-item:last-child::after { display: none; }
+      .social-link { @apply flex items-center gap-3 transition font-medium text-cream; }
+      .social-link:hover { color: theme('colors.gold.DEFAULT') !important; }
+      .info-row { @apply flex items-start gap-3; }
+      .strength-item { @apply card p-3 flex items-center gap-2 text-sm; }
+
+      .filter-tab { border-bottom: 2px solid transparent; @apply text-muted font-semibold transition cursor-pointer px-5 py-4 text-sm whitespace-nowrap; }
+      .filter-tab:hover { @apply text-cream; border-color: theme('colors.ink.border'); }
+      .filter-tab.active { @apply text-gold; border-color: theme('colors.gold.DEFAULT'); }
+      .project-thumb { @apply h-32 flex items-center justify-center text-5xl border-b border-ink-border bg-gradient-to-br from-[#161200] to-[#0e0c00]; }
     }
   </style>
 </head>
 <body class="font-sans bg-ink text-cream [scroll-behavior:smooth]">
 
   <!-- Header -->
-  <header class="fixed top-0 left-0 right-0 z-50 border-b border-ink-border bg-ink/90 backdrop-blur-sm">
-    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="index.html" class="font-serif font-black text-lg tracking-tight text-gold">A. Salam Tasnim</a>
-      <nav class="flex items-center gap-8 text-sm font-semibold text-muted">
-        <a href="index.html" class="nav-link active text-gold">Home</a>
-        <a href="about.html" class="nav-link hover:text-white transition">About</a>
-        <a href="showcase.html" class="nav-link hover:text-white transition">Projects</a>
-        <a href="mailto:abdussalamtasnim@gmail.com" class="bg-gold hover:bg-gold-light text-ink font-bold tracking-wide px-4 py-1.5 text-sm transition">Hire Me</a>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="index.html" class="brand">A. Salam Tasnim</a>
+      <nav class="site-nav">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="archive.html" class="nav-link">Archive</a>
+        <a href="contact.html" class="btn-primary-sm">Contact Me</a>
       </nav>
     </div>
   </header>
 
   <!-- Page Hero -->
-  <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-16 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,#1a1200_0%,#0A0A0A_70%)]">
+  <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-16 hero-glow-lg">
 
     <div class="clip-cut-lg w-[130px] h-[130px] flex items-center justify-center mb-6 relative overflow-hidden bg-gradient-to-br from-[#1f1700] to-[#3d2e00] ring-[1.5px] ring-gold">
       <img src="img.png"/>
     </div>
 
-    <div class="section-label flex items-center justify-center gap-2.5 text-[0.7rem] font-bold tracking-[0.2em] uppercase text-gold mb-4">Computer Science &amp; Engineering Student</div>
+    <div class="section-label-center">Computer Science &amp; Engineering Student</div>
 
     <h1 class="font-serif text-[clamp(3.2rem,9vw,6.5rem)] leading-[0.95] tracking-[-0.02em] text-white mb-6">
       Abdus Salam<br/>Tasnim
@@ -88,11 +132,8 @@
     </p>
 
     <div class="flex flex-wrap justify-center gap-3 mb-16">
-      <a href="showcase.html" class="bg-gold hover:bg-gold-light text-ink font-bold tracking-wide px-6 py-3 text-sm transition">See My Projects</a>
-      <a href="about.html"
-         class="px-6 py-3 text-sm font-semibold border border-ink-border text-cream transition hover:border-gold-dim hover:text-gold">
-        My Resume
-      </a>
+      <a href="forge.html" class="btn-primary">See My Projects</a>
+      <a href="contact.html" class="btn-outline">Contact Me</a>
     </div>
 
     <div class="animate-nudge text-2xl text-ink-border">↓</div>
@@ -103,26 +144,26 @@
     <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-14 items-center">
 
       <div>
-        <div class="section-label flex items-center gap-2.5 text-[0.7rem] font-bold tracking-[0.2em] uppercase text-gold mb-4">About Me</div>
+        <div class="section-label">About Me</div>
         <h2 class="font-serif text-3xl font-black mb-4 text-white">Where software<br/>meets hardware.</h2>
-        <div class="w-10 h-[3px] bg-gold mb-6"></div>
+        <div class="section-divider"></div>
         <p class="leading-relaxed mb-6 text-muted">
           I'm a CSE student at BAIUST with a strong interest in software development,
           embedded systems, and networking. I enjoy building complete applications —
           from idea to deployment — and understanding how systems work internally.
         </p>
-        <a href="about.html" class="text-sm font-bold tracking-wide hover:opacity-70 transition text-gold">
-          Read more about me →
+        <a href="contact.html" class="text-sm font-bold tracking-wide hover:opacity-70 transition text-gold">
+          Get in touch →
         </a>
       </div>
 
       <div class="grid grid-cols-2 gap-2">
-        <div class="bg-ink-card border border-ink-border p-5 text-center transition hover:border-gold-dim hover:bg-[#141000]"><div class="text-3xl mb-2">🌐</div><p class="font-semibold text-sm text-white">Web Dev</p></div>
-        <div class="bg-ink-card border border-ink-border p-5 text-center transition hover:border-gold-dim hover:bg-[#141000]"><div class="text-3xl mb-2">⚡</div><p class="font-semibold text-sm text-white">JavaScript</p></div>
-        <div class="bg-ink-card border border-ink-border p-5 text-center transition hover:border-gold-dim hover:bg-[#141000]"><div class="text-3xl mb-2">🔌</div><p class="font-semibold text-sm text-white">ESP32 &amp; Arduino</p></div>
-        <div class="bg-ink-card border border-ink-border p-5 text-center transition hover:border-gold-dim hover:bg-[#141000]"><div class="text-3xl mb-2">🔥</div><p class="font-semibold text-sm text-white">Firebase</p></div>
-        <div class="bg-ink-card border border-ink-border p-5 text-center transition hover:border-gold-dim hover:bg-[#141000]"><div class="text-3xl mb-2">🌳</div><p class="font-semibold text-sm text-white">Networking</p></div>
-        <div class="bg-ink-card border border-ink-border p-5 text-center transition hover:border-gold-dim hover:bg-[#141000]"><div class="text-3xl mb-2">🛠️</div><p class="font-semibold text-sm text-white">C / C++</p></div>
+        <div class="card p-5 text-center transition hover:border-gold-dim hover:bg-[#141000]"><div class="text-3xl mb-2">🌐</div><p class="font-semibold text-sm text-white">Web Dev</p></div>
+        <div class="card p-5 text-center transition hover:border-gold-dim hover:bg-[#141000]"><div class="text-3xl mb-2">⚡</div><p class="font-semibold text-sm text-white">JavaScript</p></div>
+        <div class="card p-5 text-center transition hover:border-gold-dim hover:bg-[#141000]"><div class="text-3xl mb-2">🔌</div><p class="font-semibold text-sm text-white">ESP32 &amp; Arduino</p></div>
+        <div class="card p-5 text-center transition hover:border-gold-dim hover:bg-[#141000]"><div class="text-3xl mb-2">🔥</div><p class="font-semibold text-sm text-white">Firebase</p></div>
+        <div class="card p-5 text-center transition hover:border-gold-dim hover:bg-[#141000]"><div class="text-3xl mb-2">🌳</div><p class="font-semibold text-sm text-white">Networking</p></div>
+        <div class="card p-5 text-center transition hover:border-gold-dim hover:bg-[#141000]"><div class="text-3xl mb-2">🛠️</div><p class="font-semibold text-sm text-white">C / C++</p></div>
       </div>
     </div>
   </section>
@@ -132,14 +173,14 @@
     <div class="max-w-4xl mx-auto">
 
       <div class="text-center mb-14">
-        <div class="section-label flex items-center justify-center gap-2.5 text-[0.7rem] font-bold tracking-[0.2em] uppercase text-gold mb-4">Work</div>
+        <div class="section-label-center">Work</div>
         <h2 class="font-serif text-3xl font-black text-white">Featured Projects</h2>
       </div>
 
       <div class="space-y-4">
 
         <!-- Project 01 -->
-        <div class="bg-ink-card border border-ink-border p-6 flex flex-col sm:flex-row items-start gap-5 group transition hover:border-gold-dim hover:-translate-y-1">
+        <div class="card-hover p-6 flex flex-col sm:flex-row items-start gap-5 group">
           <div class="font-serif text-5xl font-black text-[#1E1E1E] leading-none shrink-0">01</div>
           <div class="flex-1">
             <h3 class="font-bold text-white text-lg mb-1">CSE Learn</h3>
@@ -148,16 +189,16 @@
               find study resources — all in one place.
             </p>
             <div class="flex flex-wrap gap-2">
-              <span class="text-[0.7rem] font-semibold tracking-wide bg-gold-dark text-gold border border-gold-dim px-2.5 py-0.5">React</span>
-              <span class="text-[0.7rem] font-semibold tracking-wide bg-gold-dark text-gold border border-gold-dim px-2.5 py-0.5">Firebase</span>
-              <span class="text-[0.7rem] font-semibold tracking-wide bg-gold-dark text-gold border border-gold-dim px-2.5 py-0.5">Tailwind</span>
+              <span class="badge">React</span>
+              <span class="badge">Firebase</span>
+              <span class="badge">Tailwind</span>
             </div>
           </div>
           <a href="https://cs-elearn.vercel.app/" target="_blank" rel="noopener" class="text-2xl transition shrink-0 text-ink-border group-hover:text-gold">→</a>
         </div>
 
         <!-- Project 02 -->
-        <div class="bg-ink-card border border-ink-border p-6 flex flex-col sm:flex-row items-start gap-5 group transition hover:border-gold-dim hover:-translate-y-1">
+        <div class="card-hover p-6 flex flex-col sm:flex-row items-start gap-5 group">
           <div class="font-serif text-5xl font-black text-[#1E1E1E] leading-none shrink-0">02</div>
           <div class="flex-1">
             <h3 class="font-bold text-white text-lg mb-1">Wave Visualizer</h3>
@@ -166,16 +207,16 @@
               frequency, and sampling concepts in real time.
             </p>
             <div class="flex flex-wrap gap-2">
-              <span class="text-[0.7rem] font-semibold tracking-wide bg-gold-dark text-gold border border-gold-dim px-2.5 py-0.5">React</span>
-              <span class="text-[0.7rem] font-semibold tracking-wide bg-gold-dark text-gold border border-gold-dim px-2.5 py-0.5">Canvas</span>
-              <span class="text-[0.7rem] font-semibold tracking-wide bg-gold-dark text-gold border border-gold-dim px-2.5 py-0.5">Signal Processing</span>
+              <span class="badge">React</span>
+              <span class="badge">Canvas</span>
+              <span class="badge">Signal Processing</span>
             </div>
           </div>
           <a href="https://wave-visualizer-smoky.vercel.app/" target="_blank" rel="noopener" class="text-2xl transition shrink-0 text-ink-border group-hover:text-gold">→</a>
         </div>
 
         <!-- Project 03 -->
-        <div class="bg-ink-card border border-ink-border p-6 flex flex-col sm:flex-row items-start gap-5 group transition hover:border-gold-dim hover:-translate-y-1">
+        <div class="card-hover p-6 flex flex-col sm:flex-row items-start gap-5 group">
           <div class="font-serif text-5xl font-black text-[#1E1E1E] leading-none shrink-0">03</div>
           <div class="flex-1">
             <h3 class="font-bold text-white text-lg mb-1">Smart Stove Safety System</h3>
@@ -184,9 +225,9 @@
               automatically shuts off the stove to prevent gas leaks and fire hazards.
             </p>
             <div class="flex flex-wrap gap-2">
-              <span class="text-[0.7rem] font-semibold tracking-wide bg-gold-dark text-gold border border-gold-dim px-2.5 py-0.5">ESP32</span>
-              <span class="text-[0.7rem] font-semibold tracking-wide bg-gold-dark text-gold border border-gold-dim px-2.5 py-0.5">C++</span>
-              <span class="text-[0.7rem] font-semibold tracking-wide bg-gold-dark text-gold border border-gold-dim px-2.5 py-0.5">Sensors</span>
+              <span class="badge">ESP32</span>
+              <span class="badge">C++</span>
+              <span class="badge">Sensors</span>
             </div>
           </div>
           <a href="https://github.com/straight-banana/stoveSafety" target="_blank" rel="noopener" class="text-2xl transition shrink-0 text-ink-border group-hover:text-gold">→</a>
@@ -195,8 +236,8 @@
       </div>
 
       <div class="text-center mt-10">
-        <a href="showcase.html" class="text-sm font-bold tracking-wide hover:opacity-70 transition text-gold">
-          See all projects →
+        <a href="contact.html" class="text-sm font-bold tracking-wide hover:opacity-70 transition text-gold">
+          Contact Me →
         </a>
       </div>
     </div>
@@ -205,24 +246,24 @@
   <!-- Get In Touch -->
   <section class="bg-ink-card border-t border-b border-ink-border py-20 px-6 text-center">
     <div class="max-w-xl mx-auto">
-      <div class="section-label flex items-center justify-center gap-2.5 text-[0.7rem] font-bold tracking-[0.2em] uppercase text-gold mb-4">Get In Touch</div>
+      <div class="section-label-center">Get In Touch</div>
       <h2 class="font-serif text-4xl font-black text-white mb-4">Let's work<br/>together.</h2>
-      <div class="w-10 h-[3px] bg-gold mb-6 mx-auto"></div>
+      <div class="section-divider-center"></div>
       <p class="mb-8 leading-relaxed text-muted">
         I'm looking for internships, collaborative projects, and opportunities to
         build things that solve real problems. Let's talk.
       </p>
-      <a href="mailto:abdussalamtasnim@gmail.com" class="bg-gold hover:bg-gold-light text-ink font-bold tracking-wide inline-block px-8 py-4 text-base transition">
-        abdussalamtasnim@gmail.com
+      <a href="contact.html" class="btn-primary-lg inline-block">
+        Contact Me      
       </a>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-ink border-t border-ink-border py-6 px-6">
-    <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-4">
+  <footer class="site-footer">
+    <div class="site-footer-inner">
       <p class="text-sm text-muted">© 2026 Abdus Salam Tasnim. Built with HTML &amp; Tailwind CSS.</p>
-      <div class="flex gap-5 text-sm text-muted">
+      <div class="footer-links">
         <a href="https://github.com/straight-banana" target="_blank" rel="noopener" class="hover:text-white transition">GitHub</a>
         <a href="https://www.linkedin.com/in/abduabdussalamtasnim/" target="_blank" rel="noopener" class="hover:text-white transition">LinkedIn</a>
       </div>

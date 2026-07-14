@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact - A. Salam Tasnim</title> 
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" href="img.png"/>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: { light: '#E8C76A', DEFAULT: '#C9A84C', dim: '#7A6025', dark: '#1E1600' },
+            ink: { DEFAULT: '#0A0A0A', card: '#111111', border: '#2A2A2A' },
+            cream: '#F0EBE0',
+            muted: '#8A8070',
+          },
+          fontFamily: {
+            serif: ['Merriweather', 'serif'],
+            sans: ['Space Grotesk', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer components {
+      /* Navigation */
+      .nav-link {
+        @apply relative hover:text-white transition font-semibold text-muted;
+      }
+      .nav-link.active {
+        @apply text-gold;
+      }
+      .nav-link::after {
+        content: '';
+        @apply absolute -bottom-[3px] left-0 w-0 h-[2px] bg-gold transition-all duration-200;
+      }
+      .nav-link:hover::after, .nav-link.active::after {
+        @apply w-full;
+      }
+
+      /* Buttons */
+      .btn-primary {
+        @apply bg-gold hover:bg-gold-light text-ink font-bold tracking-wide px-4 py-1.5 text-sm transition cursor-pointer text-center;
+      }
+      .btn-large {
+        @apply inline-block px-8 py-4 text-base;
+      }
+
+      /* Typography & Labels */
+      .section-label {
+        @apply flex items-center gap-2.5 text-[0.7rem] font-bold tracking-[0.2em] uppercase text-gold mb-4;
+      }
+      .section-label::before {
+        content: '';
+        @apply inline-block w-[28px] h-[2px] bg-gold;
+      }
+      .section-label-center {
+        @apply justify-center;
+      }
+
+      /* Form Elements */
+      .form-group {
+        @apply flex flex-col gap-2 mb-6;
+      }
+      .form-label {
+        @apply text-sm font-semibold text-muted tracking-wide;
+      }
+      .form-input {
+        @apply w-full bg-[#161616] border border-ink-border text-cream px-4 py-3 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors;
+      }
+      
+      /* Contact Cards */
+      .contact-card {
+        @apply bg-ink-card border border-ink-border p-6 flex flex-col gap-1 transition hover:border-gold-dim;
+      }
+    }
+  </style>
+</head>
+<body class="font-sans bg-ink text-cream [scroll-behavior:smooth] flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-ink-border bg-ink/90 backdrop-blur-sm">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="font-serif font-black text-lg tracking-tight text-gold">A. Salam Tasnim</a>
+      <nav class="flex items-center gap-8 text-sm font-semibold text-muted">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="archive.html" class="nav-link">Archive</a>
+        <a href="contact.html" class="font-bold tracking-wide text-sm transition bg-gold hover:bg-gold-light text-ink px-4 py-1.5">Contact Me</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="pt-32 pb-16 px-6 text-center border-b border-ink-border bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,#1a1200_0%,#0A0A0A_70%)]">
+    <div class="max-w-2xl mx-auto">
+      <div class="section-label section-label-center">Get In Touch</div>
+      <h1 class="font-serif text-4xl md:text-5xl font-black text-white mb-4">Let's Connect</h1>
+      <p class="leading-relaxed text-muted">
+        Whether you have a question, a project idea, or just want to say hi, my inbox is always open. I'll try my best to get back to you!
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="max-w-5xl mx-auto px-6 py-16 flex-1 w-full grid md:grid-cols-2 gap-12 lg:gap-20">
+    
+    <!-- Left Column: Contact Info -->
+    <div>
+      <h2 class="font-serif text-2xl font-bold text-white mb-8">Contact Information</h2>
+      
+      <div class="flex flex-col gap-4">
+        <!-- Personal Email -->
+        <div class="contact-card">
+          <span class="text-xs font-bold tracking-widest uppercase text-gold mb-1">Personal Email</span>
+          <a href="mailto:abdussalamtasnim@gmail.com" class="text-lg font-medium text-white hover:text-gold transition break-all">
+            abdussalamtasnim@gmail.com
+          </a>
+        </div>
+
+        <!-- University Email -->
+        <div class="contact-card">
+          <span class="text-xs font-bold tracking-widest uppercase text-gold mb-1">University Email</span>
+          <a href="mailto:salam.cse8016@baiust.ac.bd" class="text-lg font-medium text-white hover:text-gold transition break-all">
+            salam.cse8016@baiust.ac.bd
+          </a>
+        </div>
+
+        <!-- Phone -->
+        <div class="contact-card">
+          <span class="text-xs font-bold tracking-widest uppercase text-gold mb-1">Phone / WhatsApp</span>
+          <a href="tel:+8801619163447" class="text-lg font-medium text-white hover:text-gold transition">
+            +880 1619-163447
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-10">
+        <h3 class="text-sm font-bold tracking-widest uppercase text-muted mb-4">Social Profiles</h3>
+        <div class="flex gap-4">
+          <a href="https://github.com/straight-banana" target="_blank" rel="noopener" class="bg-[#161616] border border-ink-border px-6 py-3 text-sm font-bold hover:border-gold hover:text-gold transition">
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/abduabdussalamtasnim/" target="_blank" rel="noopener" class="bg-[#161616] border border-ink-border px-6 py-3 text-sm font-bold hover:border-gold hover:text-gold transition">
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Contact Form -->
+    <div class="bg-ink-card border border-ink-border p-8 md:p-10">
+      <h2 class="font-serif text-2xl font-bold text-white mb-6">Send a Message</h2>
+      
+      <!-- 
+        Using Web3Forms to prevent phishing flags. 
+        Requires NO backend. Replace YOUR_ACCESS_KEY_HERE with the key from web3forms.com 
+      -->
+      <form action="https://api.web3forms.com/submit" method="POST">
+        
+        <!-- Web3Forms Access Key -->
+        <input type="hidden" name="access_key" value="6121fed6-c927-488e-8f39-bc0573780491">
+        
+        <!-- Spam Protection & Settings -->
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+        <input type="hidden" name="subject" value="New Contact Form Submission from Portfolio">
+        <input type="hidden" name="redirect" value="https://web3forms.com/success">
+
+        <div class="form-group">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" id="name" name="name" required placeholder="John Doe" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" name="email" required placeholder="john@example.com" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label for="message" class="form-label">Message</label>
+          <textarea id="message" name="message" required rows="5" placeholder="How can I help you?" class="form-input resize-none"></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary w-full py-4 mt-2">
+          Send Message
+        </button>
+      </form>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-ink border-t border-ink-border py-6 px-6 mt-auto">
+    <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-4">
+      <p class="text-sm text-muted">© 2026 Abdus Salam Tasnim. Built with HTML &amp; Tailwind CSS.</p>
+      <div class="flex gap-5 text-sm text-muted">
+        <a href="https://github.com/straight-banana" target="_blank" rel="noopener" class="hover:text-white transition">GitHub</a>
+        <a href="https://www.linkedin.com/in/abduabdussalamtasnim/" target="_blank" rel="noopener" class="hover:text-white transition">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
